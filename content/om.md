@@ -3,14 +3,12 @@
 Om
 =========================
 
-Denna webbplatsen är en del av kursen [XXX](https://dbwebb.se/kurser/XXX). Uppdatera så att länken går till kursens hemsida på dwebb.se.
+Denna webbplatsen är en del av kursen [oophp](https://dbwebb.se/kurser/oophp). Uppdatera så att länken går till kursens hemsida på dwebb.se.
 
-Några egna kloka ord om kursen?
+Detta är en kurs om objektorientering i php.
 
-En fin och representativ bild för kursen, enligt ditt egna val.
+[FIGURE src=image/workstation.jpg?w=350 caption="En dator."]
 
-[FIGURE src=image/car.png?w=300 caption="En fin bil som demobild."]
+Länka till [dbwebb kursrepot på GitHub](https://github.com/dbwebb-se/oophp).
 
-Länka till [dbwebb kursrepot på GitHub](https://github.com/dbwebbse/XXX).
-
-Länka till [ditt eget repo för me/redovisa på GitHub](https://github.com/XXX/XXX).
+Länka till [ditt eget repo för me/redovisa på GitHub](https://github.com/Kofotsmordarn/oophp).
