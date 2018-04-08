@@ -1,0 +1,143 @@
+<?php
+
+namespace Rasb14\T100;
+
+/**
+ * Game class for managing game data.
+ */
+class Game
+{
+    /**
+     * @var Player $player The human player.
+     * @var Player $ai The AI player.
+     * @var int $dices The number of dices to use.
+     * @var DiceHand $diceHand The DiceHand to use when rolling dices.
+     */
+    private $player;
+    private $ai;
+    private $dices;
+    private $diceHand;
+
+    /**
+     * Constructor to create the Game class.
+     * 
+     * @param int $dices The number of dices to use.
+     * @param string $playerName The name of the human player.
+     */
+    public function __construct(int $dices, string $playerName)
+    {
+        $this->dices = $dices;
+        $this->diceHand = new DiceHand($this->dices);
+        $this->player = new Player($playerName);
+        $this->ai = new Player("AI");
+    }
+
+    /**
+     * Processes a turn, making a roll for the player.
+     * 
+     * @param bool $save Tells the function if it should save the current unsaved points for the player.
+     */
+    public function doRoll($save)
+    {
+        if ($save == true) {
+            $this->player->save();
+            if ($this->player->savedPoints() < 100) {
+                $this->runAi();
+            }
+        } else {
+            $this->diceHand->roll();
+            if ($this->diceHand->anyDieHasValue(1)) {
+                $this->player->removeUnsaved();
+                $this->runAi();
+            } else {
+                $this->player->addUnsaved($this->diceHand->sum());
+            }
+        }
+    }
+    
+    /**
+     * Checks if there is a winner.
+     * 
+     * @return string as winner or null if there is no winner yet.
+     */
+    public function winner()
+    {
+        if ($this->player->savedPoints() > 100) {
+            return $this->player->name();
+        } elseif ($this->ai->savedPoints() > 100) {
+            return $this->ai->name();
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Returns the graphic specs for the current dices in the diceHand.
+     * 
+     * @return array as the graphics.
+     */
+    public function graphic()
+    {
+        return $this->diceHand->graphic();
+    }
+
+    /**
+     * Gets the unsaved points of a player.
+     * 
+     * @return int as the number of unsaved points.
+     */
+    public function currentUnsaved()
+    {
+        return $this->player->unsavedPoints();
+    }
+
+    /**
+     * Generates the standings table.
+     * 
+     * @return string as the standings table.
+     */
+    public function generateStandingsTable()
+    {
+        $table = "<table><tr><th>Player</th><th>Points</th></tr>";
+
+        $pName = $this->player->name();
+        $pPoints = $this->player->savedPoints();
+        $table .= "<tr><td>$pName</td><td>$pPoints</td></tr>";
+        
+        $aiName = $this->ai->name();
+        $aiPoints = $this->ai->savedPoints();
+        $table .= "<tr><td>$aiName</td><td>$aiPoints</td></tr>";
+
+        $table .= "</table>";
+        return $table;
+    }
+
+    /**
+     * Runs the AI scruipt.
+     * 
+     * @return void
+     */
+    private function runAi()
+    {
+        $done = false;
+        do {
+            $this->diceHand->roll();
+            if ($this->diceHand->anyDieHasValue(1)) {
+                $this->ai->removeUnsaved();
+                $done = true;
+            } else {
+                $this->ai->addUnsaved($this->diceHand->sum());
+            }
+
+            if (8 < $this->diceHand->sum() || 20 < $this->ai->unsavedPoints()) {
+                $this->ai->save();
+                $done = true;
+            } 
+        } while ($done == false);
+
+        if ($this->ai->savedPoints() < 100) {
+            $this->doRoll(false);
+        }
+    }
+}
+
