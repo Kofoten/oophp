@@ -18,7 +18,7 @@ class Player
 
     /**
      * Constructor to create a Player
-     * 
+     *
      * @param string $name The name of the player.
      * @param int $savedPoints The starting amount of points for a player.
      */
@@ -35,7 +35,7 @@ class Player
 
     /**
      * Saves the unsaved points.
-     * 
+     *
      * @return void.
      */
     public function save()
@@ -46,7 +46,7 @@ class Player
 
     /**
      * Removes the unsaved points.
-     * 
+     *
      * @return void.
      */
     public function removeUnsaved()
@@ -56,9 +56,9 @@ class Player
 
     /**
      * Adds to the unsaved points.
-     * 
+     *
      * @param int $value The value to add.
-     * 
+     *
      * @return void.
      */
     public function addUnsaved($value)
@@ -68,7 +68,7 @@ class Player
 
     /**
      * Gets the saved points.
-     * 
+     *
      * @return int as saved points.
      */
     public function savedPoints()
@@ -78,7 +78,7 @@ class Player
 
     /**
      * Gets the unsaved points.
-     * 
+     *
      * @return int as unsaved points.
      */
     public function unsavedPoints()
@@ -88,7 +88,7 @@ class Player
 
     /**
      * Gets the players name.
-     * 
+     *
      * @return string as player name.
      */
     public function name()

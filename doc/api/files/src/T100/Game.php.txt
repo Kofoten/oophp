@@ -20,7 +20,7 @@ class Game
 
     /**
      * Constructor to create the Game class.
-     * 
+     *
      * @param int $dices The number of dices to use.
      * @param string $playerName The name of the human player.
      */
@@ -34,7 +34,7 @@ class Game
 
     /**
      * Processes a turn, making a roll for the player.
-     * 
+     *
      * @param bool $save Tells the function if it should save the current unsaved points for the player.
      */
     public function doRoll($save)
@@ -57,7 +57,7 @@ class Game
     
     /**
      * Checks if there is a winner.
-     * 
+     *
      * @return string as winner or null if there is no winner yet.
      */
     public function winner()
@@ -73,7 +73,7 @@ class Game
 
     /**
      * Returns the graphic specs for the current dices in the diceHand.
-     * 
+     *
      * @return array as the graphics.
      */
     public function graphic()
@@ -83,7 +83,7 @@ class Game
 
     /**
      * Gets the unsaved points of a player.
-     * 
+     *
      * @return int as the number of unsaved points.
      */
     public function currentUnsaved()
@@ -93,7 +93,7 @@ class Game
 
     /**
      * Generates the standings table.
-     * 
+     *
      * @return string as the standings table.
      */
     public function generateStandingsTable()
@@ -114,7 +114,7 @@ class Game
 
     /**
      * Runs the AI scruipt.
-     * 
+     *
      * @return void
      */
     private function runAi()
@@ -132,7 +132,7 @@ class Game
             if (8 < $this->diceHand->sum() || 20 < $this->ai->unsavedPoints()) {
                 $this->ai->save();
                 $done = true;
-            } 
+            }
         } while ($done == false);
 
         if ($this->ai->savedPoints() < 100) {

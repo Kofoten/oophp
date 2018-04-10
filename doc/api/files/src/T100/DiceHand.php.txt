@@ -14,7 +14,7 @@ class DiceHand
 
     /**
      * Constructor to create a Dice.
-     * 
+     *
      * @param int $dices The number of dices of the DiceHand.
      */
     public function __construct(int $dices)
@@ -78,9 +78,9 @@ class DiceHand
 
     /**
      * Checks if any dice currently has the specified value.
-     *  
+     *
      * @param int $value The value to add.
-     * 
+     *
      * @return bool as some die has the specified value.
      */
     public function anyDieHasValue(int $value)
@@ -95,7 +95,7 @@ class DiceHand
 
     /**
      * Gets the graphics for the dices.
-     * 
+     *
      * @return array as graphics.
      */
     public function graphic()
