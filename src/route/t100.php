@@ -22,14 +22,18 @@ $app->router->get("t100", function () use ($app) {
  * Play game using POST and SESSION
  */
 $app->router->post("t100", function () use ($app) {
-    session_name("rasb14_t100");
-    session_start();
+    $app->session();
     
+    $post = $app->request->getPost();
     $game;
-    if (isset($_POST["player"])) {
-        $game = new \Rasb14\T100\Game(5, $_POST["player"]);
-    } elseif (isset($_SESSION["game"])) {
-        $game = $_SESSION["game"];
+    if (isset($post["player"])) {
+        $dices = 2;
+        if (isset($post["dices"]) && is_numeric($post["dices"])) {
+            $dices = $post["dices"];
+        }
+        $game = new \Rasb14\T100\Game($dices, $post["player"]);
+    } elseif ($app->session->has("game")) {
+        $game = $app->session->get("game");
     } else {
         $app->view->add("t100/error", [
             "title" => "Tärning 100",
@@ -41,14 +45,14 @@ $app->router->post("t100", function () use ($app) {
         ]);
     }
 
-    if (isset($_POST["save"])) {
+    if (isset($post["save"])) {
         $game->doRoll(true);
     } else {
         $game->doRoll(false);
     }
     
     if (!is_null($game->winner())) {
-        session_destroy();
+        $app->session->destroy();
 
         $data = [
             "title" => "Tärning 100",
@@ -58,13 +62,14 @@ $app->router->post("t100", function () use ($app) {
         $app->view->add("t100/win", $data);
         $app->page->render($data);
     } else {
-        $_SESSION["game"] = $game;
+        $app->session->set("game", $game);
         
         $data = [
             "title" => "Tärning 100",
             "graphic" => $game->graphic(),
             "unsaved" => $game->currentUnsaved(),
-            "standings" => $game->generateStandingsTable()
+            "standings" => $game->generateStandingsTable(),
+            "histogram" => $game->htmlHistogram()
         ];
     
         $app->view->add("t100/game", $data);

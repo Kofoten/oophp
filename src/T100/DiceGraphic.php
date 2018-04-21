@@ -21,6 +21,8 @@ class DiceGraphic extends Dice
     }
 
     /**
+     * Gets the graphic representation of the die.
+     *
      * @return string as the graphical representation of the value.
      */
     public function graphic()

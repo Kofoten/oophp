@@ -27,7 +27,11 @@ $app->router->post("t100", function () use ($app) {
     
     $game;
     if (isset($_POST["player"])) {
-        $game = new \Rasb14\T100\Game(5, $_POST["player"]);
+        $dices = 2;
+        if (isset($_POST["dices"]) && is_numeric($_POST["dices"])) {
+            $dices = $_POST["dices"];
+        }
+        $game = new \Rasb14\T100\Game($dices, $_POST["player"]);
     } elseif (isset($_SESSION["game"])) {
         $game = $_SESSION["game"];
     } else {
@@ -64,7 +68,8 @@ $app->router->post("t100", function () use ($app) {
             "title" => "Tärning 100",
             "graphic" => $game->graphic(),
             "unsaved" => $game->currentUnsaved(),
-            "standings" => $game->generateStandingsTable()
+            "standings" => $game->generateStandingsTable(),
+            "histogram" => $game->histogram()
         ];
     
         $app->view->add("t100/game", $data);

@@ -92,23 +92,33 @@ class Game
     }
 
     /**
+     * Gets the histogram for the current dicehand.
+     *
+     * @return string as html representing the histogram.
+     */
+    public function htmlHistogram()
+    {
+        return $this->diceHand->htmlHistogram();
+    }
+
+    /**
      * Generates the standings table.
      *
      * @return string as the standings table.
      */
     public function generateStandingsTable()
     {
-        $table = "<table><tr><th>Player</th><th>Points</th></tr>";
+        $table = '<table><tr><th>Player</th><th>Points</th></tr>';
 
         $pName = $this->player->name();
         $pPoints = $this->player->savedPoints();
-        $table .= "<tr><td>$pName</td><td>$pPoints</td></tr>";
+        $table .= '<tr><td>' . $pName . '</td><td>' . $pPoints . '</td></tr>';
         
         $aiName = $this->ai->name();
         $aiPoints = $this->ai->savedPoints();
-        $table .= "<tr><td>$aiName</td><td>$aiPoints</td></tr>";
+        $table .= '<tr><td>' . $aiName . '</td><td>' . $aiPoints . '</td></tr>';
 
-        $table .= "</table>";
+        $table .= '</table>';
         return $table;
     }
 
@@ -129,7 +139,7 @@ class Game
                 $this->ai->addUnsaved($this->diceHand->sum());
             }
 
-            if (8 < $this->diceHand->sum() || 20 < $this->ai->unsavedPoints()) {
+            if ($this->aiShouldSave()) {
                 $this->ai->save();
                 $done = true;
             }
@@ -138,5 +148,37 @@ class Game
         if ($this->ai->savedPoints() < 100) {
             $this->doRoll(false);
         }
+    }
+
+    /**
+     * Calculates if AI should save.
+     *
+     * @return bool as should save.
+     */
+    private function aiShouldSave()
+    {
+        if ($this->player->savedPoints() / 4 * 3 > $this->ai->savedPoints() + $this->ai->unsavedPoints()) {
+            return false;
+        }
+
+        $histograms = $this->diceHand->histogram();
+        $sides = 0;
+        $ones = 0;
+        $other = 0;
+        foreach ($histograms as $histogram) {
+            foreach ($histogram as $key => $value) {
+                $sides++;
+                if ($key == 1) {
+                    $ones++;
+                } else {
+                    $other++;
+                }
+            }
+        }
+
+        if ($ones / $other < 1 / $sides) {
+            return false;
+        }
+        return true;
     }
 }

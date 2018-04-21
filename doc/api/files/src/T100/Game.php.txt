@@ -92,23 +92,33 @@ class Game
     }
 
     /**
+     * Gets the histogram for the current dicehand.
+     * 
+     * @return string as html representing the histogram.
+     */
+    public function histogram()
+    {
+        return $this->diceHand->histogram();
+    }
+
+    /**
      * Generates the standings table.
      *
      * @return string as the standings table.
      */
     public function generateStandingsTable()
     {
-        $table = "<table><tr><th>Player</th><th>Points</th></tr>";
+        $table = '<table><tr><th>Player</th><th>Points</th></tr>';
 
         $pName = $this->player->name();
         $pPoints = $this->player->savedPoints();
-        $table .= "<tr><td>$pName</td><td>$pPoints</td></tr>";
+        $table .= '<tr><td>' . $pName . '</td><td>' . $pPoints . '</td></tr>';
         
         $aiName = $this->ai->name();
         $aiPoints = $this->ai->savedPoints();
-        $table .= "<tr><td>$aiName</td><td>$aiPoints</td></tr>";
+        $table .= '<tr><td>' . $aiName . '</td><td>' . $aiPoints . '</td></tr>';
 
-        $table .= "</table>";
+        $table .= '</table>';
         return $table;
     }
 

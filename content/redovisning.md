@@ -15,7 +15,12 @@ Jag har programmerat väldigt mycket i C# som är väldigt objektorienterat. Jag
 Kmom02
 -------------------------
 
-Att flytta gissningsspelet var inte jättesvårt om man tog hjälp av videoserien som fanns med i uppgiften. Det var dock väldigt måna ställen att ändra på. Tärningsspelet skrev jag ihop lite testkod såg till att den funkade och fixade sedan alla buggar och lade till vinstfunktion och ai. UML diagram och phpDocumentor är kanske bra verktyg att använda om man jobbar i grupp eller samarbetar med någon annan. Jag skriver nog heller kod utanför ramverket och portar in den sedan. Jag tycker det är enklare att debugga utanför ramverket.
+Att flytta gissningsspelet var inte jättesvårt om man tog hjälp av videoserien som fanns med i uppgiften. Det var dock väldigt måna ställen att ändra på. Jag fattade först inte vilken src mapp som klasserna skulle flyttas till. Efter att ha kollat på videoserien så var allt glasklart. Tummen upp till dem. När jag började på tärningsspelet skrev jag ihop lite testkod, såg till att den funkade och fixade sedan alla buggar och lade till vinstfunktion och ai. Jag hade en plan för vad jag skulle göra redan från början och genomförde den ganska väl. Jag fick lägga till en player klass och implementera lite för mycket kod i routefilen. Detta för att jag inte ville hålla på med sessions och grejer i mina klasser, det blev nog så bra som det kunde bli.
+
+UML diagram och phpDocumentor är kanske bra verktyg att använda om man jobbar i grupp eller samarbetar med någon annan. Det gäller som sagt också in enkel persons projek om man har en stor eller komplex klasstruktur. Jag tror nog nyttan ändå är som allra störst i grupp.
+
+Jag skriver nog heller kod utanför ramverket och portar in den sedan. Jag tycker det är enklare att debugga utanför ramverket. Det gick att debugga även i ramverket men det var många steg för att få en utskrift, jag försökte sedan använda Xdebug och PHP Debug för att se vad som blev fel. Det gick sådär men jag hittade felet.
+
 
 [http://www.student.bth.se/~rasb14/dbwebb-kurser/oophp/me](http://www.student.bth.se/~rasb14/dbwebb-kurser/oophp/me)
 

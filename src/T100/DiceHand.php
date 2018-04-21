@@ -106,4 +106,42 @@ class DiceHand
         }
         return $gfx;
     }
+
+    /**
+     * Gets the histogram for the dices.
+     *
+     * @return string as an html ul list.
+     */
+    public function htmlHistogram()
+    {
+        $result = '<div class="gameRow">';
+        for ($i = 0; $i < count($this->dices); $i++) {
+            $hg = new Histogram();
+            $hg->injectData($this->dices[$i]);
+            $result .= '<div class="gameBox">';
+            $result .= '<p>Dice: ' . ($i + 1) . '</p>';
+            $result .= $hg->getHtml();
+            $result .= '</div>';
+        }
+        $result .= '</div>';
+
+        return $result;
+    }
+
+    /**
+     * Gets the histogram for the dices.
+     *
+     * @return array as a sorted histogram array.
+     */
+    public function histogram()
+    {
+        $result = [];
+        for ($i = 0; $i < count($this->dices); $i++) {
+            $hg = new Histogram();
+            $hg->injectData($this->dices[$i]);
+            $result[] = $hg->getSortedSequence();
+        }
+        
+        return $result;
+    }
 }

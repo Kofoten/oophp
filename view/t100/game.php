@@ -4,6 +4,28 @@ namespace Anax\View;
 
 ?>
 <style>
+    .gameRow {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .gameBox {
+        flex-grow: 1;
+    }
+
+    .mainBox {
+        flex-grow: 9
+    }
+
+    .histogramList {
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .low {
+        margin-bottom: 0;
+    }
+
     .dice-sprite {
         display: inline-block;
         padding: 0;
@@ -21,18 +43,24 @@ namespace Anax\View;
     .dice-sprite.dice-6 { background-position: 0 0; }
 </style>
 <h1><?= $title ?></h1>
-<div style="float: left;">
-    <p>Current unsaved points: <?= $unsaved ?></p>
-    <p>
-        <?php foreach ($graphic as $value) : ?>
-            <i class="dice-sprite <?= $value ?>"></i>
-        <?php endforeach; ?>
-    </p>
-    <form method="POST">
-        <input type="submit" name="roll" value="Roll"/>
-        <input type="submit" name="save" value="Save"/>
-    </form>
+<div class="gameRow">
+    <div class="mainBox">
+        <p>Current unsaved points: <?= $unsaved ?></p>
+        <p>
+            <?php foreach ($graphic as $value) : ?>
+                <i class="dice-sprite <?= $value ?>"></i>
+            <?php endforeach; ?>
+        </p>
+        <form method="POST">
+            <input type="submit" name="roll" value="Roll"/>
+            <input type="submit" name="save" value="Save"/>
+        </form>
+    </div>
+    <div class="gameBox">
+        <?= $standings ?>
+    </div>
 </div>
-<div style="float: right;">
-    <?= $standings ?>
+<div>
+    <h4 class="low">Histogram</h4>
+    <?= $histogram ?>
 </div>
