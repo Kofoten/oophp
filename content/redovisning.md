@@ -40,9 +40,15 @@ Grey Box testning, Man har inte direkt access till koden men man har någon form
 Kmom04
 -------------------------
 
-Här är redovisningstexten
+Interface verkar fungera exakt lika som motsvarigheten i C#, inga konstigheter här alltså. Trait däremot har jag dålig koll på vad man kan jämföra med men det verkar vara ett sätt att skapa statiska funktioner som fler klasser kan ta del av. Inget av tillvägagångssätten kändes konstigt, det kändes mer som att jag saknade dessa funktioner tidigare.
 
+AI:n vart väl sådär den blir lite stressad när den ligger för mycket under och slår på som bara den (resulterar oftast i att den förlorar sina poäng). Hur ”smart” resten av algoritmen kan väl diskuteras men tanken är att den ska slå vidare om 1 / antal tärningssidor är mindre än antalet ettor / antalet inte ettor. Det funkar när man använder få tärningar (upp till 3 – 4 stycken).
 
+Tyckte det var skönt med lagren av post , session och så vidare. Kändes innan lite fulhackigt att använda php globaler i ett ramverk.
+
+Att enhetstesta i ramverket var skönt nästa lika som utanför. Hade problem med att det var någon undefined app men det löstes genom att excluda src/route. Jag fick en kodtäckning på ca 50%.
+
+[http://www.student.bth.se/~rasb14/dbwebb-kurser/oophp/me](http://www.student.bth.se/~rasb14/dbwebb-kurser/oophp/me)
 
 Kmom05
 -------------------------
