@@ -53,9 +53,11 @@ Att enhetstesta i ramverket var skönt nästa lika som utanför. Hade problem me
 Kmom05
 -------------------------
 
-Här är redovisningstexten
+Jag började med att läsa igenom ”Kom igång med PHP PDO och MySQL” samtidigt som jag skummade igenom exempelkoden. Jag skapade en databas och testade att exempelkoden fungerade. Jag började sedan med uppgiften att bygga CRUD för databasen. Jag måste säga att jag personligen tycker att koden jag skrev för ramverket genom att utgå ifrån exemplet blev mycket bättre än den i exemplet. Det kändes renar på något sätt och mer strukturerat. Att det kändes så beror nog på att jag använde de abstraktionslager som ramverket levererar. Jag tyckte även att det var enkelt att skriva om exempelkoden för ramverket och stötte inte på några större problem. Det mesta var helt vanliga slarvfel som tog max 4–5 minuter att lösa.
 
+Jag implementerade bara basfunktionaliteten med undantag för att använda Cimage då det kändes som det enklaste och smidigaste sättet att lösa problemet med bildstorleken. Jag tycker att många av extrauppgifterna är saker som ett gränssnitt behöver när databasen växer men det tar helt enkelt för mycket tid för att jag ska hinna implementera dem.
 
+[http://www.student.bth.se/~rasb14/dbwebb-kurser/oophp/me](http://www.student.bth.se/~rasb14/dbwebb-kurser/oophp/me)
 
 Kmom06
 -------------------------
