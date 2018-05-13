@@ -2,6 +2,8 @@
 
 namespace Anax\View;
 
+$imgPrefix = $_SERVER["SERVER_NAME"] == "www.student.bth.se" ? "/~rasb14/dbwebb-kurser/oophp/me/redovisa/htdocs/image/" : "/image/";
+
 if (!$resultset) {
     return;
 }
@@ -18,11 +20,11 @@ $id = -1;
         <th>Edit</th>
         <th>Delete</th>
     </tr>
-    <?php foreach ($resultset as $row) : $id++ ?>
+    <?php foreach ($resultset as $row) :$id++ ?>
     <tr>
         <td><?= $id ?></td>
         <td><?= $row->id ?></td>
-        <td><img src="/image/<?= $row->image ?>?w=200" alt="<?= $row->image ?>"></td>
+        <td><img src="<?= $imgPrefix . $row->image ?>?w=200" alt="<?= $row->image ?>"></td>
         <td><?= $row->title ?></td>
         <td><?= $row->year ?></td>
         <td><a href="movie/edit?id=<?= $row->id ?>"><i class="fas fa-edit"></i></a></td>

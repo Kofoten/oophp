@@ -62,9 +62,13 @@ Jag implementerade bara basfunktionaliteten med undantag för att använda Cimag
 Kmom06
 -------------------------
 
-Här är redovisningstexten
+Tyckte det gick ganska bra att genomföra uppgiften när jag väl kom igång. Jag hade lite svårt att veta vart jag skulle börja. Bestämde mig för att börja med textfiltreringen och se till att den funkade med textfiltersidan på redovisa-sidan. Det var inte jätte knepigt att få det på plats speciellt inte om man hade läst igenom lästipsen för kursmomentet. Hade lite problem med bbcode men visade sig att jag hade skrivit fel i källtexten så det var inget fel på koden.
 
+Jag skapade bara en klass för textfiltreringen resten var bara vyer och det kan ha hamnat mycket kod i routefilen för dbcontent. Är inte helt nöjd med det, koden bara växte allt eftersom jag implementerade kraven. Jag ser definitivt potential att refactora koden. Kan tänka mig att vyerna själva skulle kunna ta hand om mer logik men det känns lite konstigt att låta dem ta hand om logik. Jag tycker inte att det känns som deras uppgift därav blev det väldigt mycket kod i routefilen. Jag tycker ändå att koden har hamnat på rätt ställen även om det kanske skulle gå att dela upp den mera så att allt inte låg i routefilen.
 
+När jag försökte skapa snygga länkar till mina sidor och bloggposter stötta jag på en sak som jag störde mig lite på. Något jag skulle tycka var bra var om det gick att ha dynamiska länkar likt ”page/blah” istället för: page?route=blah. Här skulle man önska att blah gick att hantera i routen likt page/:page och då få blah som en textsträng att använda i sin route för att veta vilken sida som skall laddas. Detta går säkert men har inte orkat ta reda på hur och har inte sett något om detta i något kursmoment.
+
+[http://www.student.bth.se/~rasb14/dbwebb-kurser/oophp/me](http://www.student.bth.se/~rasb14/dbwebb-kurser/oophp/me)
 
 Kmom07-10
 -------------------------
