@@ -129,7 +129,8 @@ $app->router->post("movie/edit", function () use ($app) {
             $post["movieImage"],
             $post["movieId"]
         ]);
-        header("Location: /movie");
+        $urlPrefix = $_SERVER["SERVER_NAME"] == "www.student.bth.se" ? "/~rasb14/dbwebb-kurser/oophp/me/redovisa/htdocs" : "";
+        header("Location: " . $urlPrefix . "/movie");
         exit;
     } else {
         $data = [
@@ -165,7 +166,8 @@ $app->router->post("movie/delete", function () use ($app) {
     if (isset($post["movieId"])) {
         $sql = "DELETE FROM movie WHERE id = ?;";
         $app->db->execute($sql, [$post["movieId"]]);
-        header("Location: /movie");
+        $urlPrefix = $_SERVER["SERVER_NAME"] == "www.student.bth.se" ? "/~rasb14/dbwebb-kurser/oophp/me/redovisa/htdocs" : "";
+        header("Location: " . $urlPrefix . "/movie");
         exit;
     } else {
         $data = [
@@ -202,7 +204,8 @@ $app->router->post("movie/add", function () use ($app) {
             $post["movieYear"],
             $post["movieImage"]
         ]);
-        header("Location: /movie");
+        $urlPrefix = $_SERVER["SERVER_NAME"] == "www.student.bth.se" ? "/~rasb14/dbwebb-kurser/oophp/me/redovisa/htdocs" : "";
+        header("Location: " . $urlPrefix . "/movie");
         exit;
     } else {
         $data = [
