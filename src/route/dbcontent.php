@@ -37,7 +37,8 @@ $app->router->post("dbcontent/add", function () use ($app) {
     $sql = "INSERT INTO content (title) VALUES (?);";
     $app->db->execute($sql, [$title]);
     $id = $app->db->lastInsertId();
-    header("Location: edit?id=$id");
+    $urlPrefix = $_SERVER["SERVER_NAME"] == "www.student.bth.se" ? "/~rasb14/dbwebb-kurser/oophp/me/redovisa/htdocs" : "";
+    header("Location: " . $urlPrefix . "/dbcontent/edit?id=$id");
     exit;
 });
 
@@ -116,7 +117,8 @@ $app->router->post("dbcontent/edit", function () use ($app) {
                 $post["contentId"]
             ]);
         }
-        header("Location: /dbcontent");
+        $urlPrefix = $_SERVER["SERVER_NAME"] == "www.student.bth.se" ? "/~rasb14/dbwebb-kurser/oophp/me/redovisa/htdocs" : "";
+        header("Location: " . $urlPrefix . "/dbcontent");
         exit;
     } else {
         $data = [
@@ -150,7 +152,8 @@ $app->router->post("dbcontent/delete", function () use ($app) {
 
     if (isset($contentId)) {
         $app->db->execute($sql, [$contentId]);
-        header("Location: /dbcontent");
+        $urlPrefix = $_SERVER["SERVER_NAME"] == "www.student.bth.se" ? "/~rasb14/dbwebb-kurser/oophp/me/redovisa/htdocs" : "";
+        header("Location: " . $urlPrefix . "/dbcontent");
         exit;
     } else {
         $data = [
