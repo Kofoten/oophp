@@ -73,4 +73,23 @@ När jag försökte skapa snygga länkar till mina sidor och bloggposter stötta
 Kmom07-10
 -------------------------
 
-Här är redovisningstexten
+Jag har implementerat kraven 1-3 då jag helt enkelt inte har haft tid till mer.
+
+###Krav 1
+
+Vid implementationen av detta krav så kopierade jag i princip min redovisa sida rakt av och modifierade den så att det skulle passa med produktspecen. Det tog lite tid att ändra om allt och det var inte det roligaste jag gjort. Jag vet inte om jag missat något viktigt men koden i route filerana blev inte särskilt dry. Jag skrev samma sak flera gånger, det känns som att detta ramvek saknar en del basicfunktioner som bör finnas i routing delen. Jag kan ha missat någon liten detalj då jag gjorde detta kmom under relativt stressade omständigheter men tyckte ändå att jag letade igenom den dokumentation jag hittade ganska noga. Det jag saknade mest var något sätt att få dunamiska routes utan att använda querysträngen. Detta går självklart att lösa med en rewrite i webservern men det kändes inte helt rätt.
+
+###Krav 2
+
+Detta krav var väldigt straight forward. Skapa tabeller i en databas är långt ifrån klurigt. Jag valde dock lite annorlunda jämfört med tidigare kmom och la pages och posts i olika tabeller. Efter att det var klart så genererade jag en png och fixade så att make test och make doc fungerade. Min code coverage är inte jättehög då jag hade ont om tid. Men fixade några procent i min TextFilter klass. Jag var nöjd med 10% på den 
+klassen. Någon form av unit test blev det i alla fall.
+
+###Krav 3
+
+Här valde jag att lägga till knappar på de olika sidor som redan fanns istället för att skapa ett helt eget gränssnitt för detta. Och använder sessions för att hålla användaren inloggad och support för icke-admins finns. I databasen beskrivs rollen av en byte där de olika bitarna kan användas som behörighetsnivåer. Är man inloggad och admin så kan man då ändra och uppdatera alla poster och produkter.
+
+###Genomförande och tankar kring kursen
+
+Jag skulle verkligen inte säga att det var svårt. Mitt största problem är att det är otroligt hektiskt på jobbet och därav har mycket tid gått dit. Jag slägde som sagt ihop det mesta på den tid som blev över och mycket gick att kopiera från tidigare kursmoment. Några fulhack finns tyvärr också på grund av tidigare nämnd tidsbrist. Jag vet inte hur mycket faktiskt objektorientering som ingick här. Det känns lite som att fokuset på det tappades lite under kursens gång. Jag personligen spenderade mer tid på att få ramverket att göra som jag vill än att faktiskt fokusera på det som var objektorienterat.
+
+[http://www.student.bth.se/~rasb14/dbwebb-kurser/oophp/me](http://www.student.bth.se/~rasb14/dbwebb-kurser/oophp/me)
